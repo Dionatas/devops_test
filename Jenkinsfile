@@ -12,8 +12,7 @@ pipeline {
 
         stage ('Starting Service') {
             steps {
-                sh 'docker container run -d --name meugo -p 80:8000 dionatas/getninjas:"${env.BUILD_ID}"'
-                sh 'sleep 5'
+                sh docker container run -d --name meugo -p 80:8000 dionatas/getninjas:"${env.BUILD_ID}"
             }
         }   
     
