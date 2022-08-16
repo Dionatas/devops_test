@@ -9,6 +9,13 @@ pipeline {
                 }
             }
         }
+
+        stage ('Starting Service') {
+            steps {
+                sh 'docker container run -d --name meugo -p 8000:8000 dionatas/getninjas:${env.BUILD_ID}'
+                sh 'sleep 5'
+            }
+        }   
     
     
     }
