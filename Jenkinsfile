@@ -11,10 +11,10 @@ pipeline {
         }
 
         stage ('Starting Service') {
-            steps {
             environment {
                 tag_version = "${env.BUILD_ID}"
             }
+            steps {
                 sh 'docker container run -d --name meugo -p 80:8000 dionatas/getninjas:$tag_version'
             }
         }   
