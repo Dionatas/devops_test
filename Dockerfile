@@ -1,9 +1,9 @@
-FROM golang AS buildando
-WORKDIR /app
-ADD . /app
-RUN go build -o meugo
+FROM golang
 
-FROM alpine
-WORKDIR /getninjas
-COPY --from=buildando /app/meugo /getninjas/
-ENTRYPOINT ./meugo
+WORKDIR /app
+
+ADD . /app
+
+RUN go get github.com/gorilla/mux
+
+ENTRYPOINT go run main.go
