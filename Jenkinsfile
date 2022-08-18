@@ -10,6 +10,16 @@ pipeline {
             }
         }
 
+        stage ('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'token-dockerhub') {
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+
         stage ('Starting Service') {
             environment {
                 tag_version = "${env.BUILD_ID}"
