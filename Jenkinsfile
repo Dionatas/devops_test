@@ -30,7 +30,7 @@ pipeline {
 
         stage ('Deploy Kubernetes') {
             steps {
-                sh echo "Não foi realizado deploy no Kubernetes por questões de custos"
+                sh 'echo "Não foi realizado deploy no Kubernetes por questões de custos"'
             }
         } 
 
