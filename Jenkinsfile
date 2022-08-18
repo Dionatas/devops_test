@@ -2,6 +2,13 @@ pipeline {
     agent any 
 
     stages {
+        
+        stage ('Remove Container') {
+            steps {
+                sh 'docker rm -f meugo'
+            }
+        } 
+        
         stage ('Build Image') {
             steps {
                 script {
@@ -9,6 +16,7 @@ pipeline {
                 }
             }
         }
+        
 
         stage ('Push Image') {
             steps {
@@ -20,7 +28,13 @@ pipeline {
             }
         }
 
-        stage ('Starting Service') {
+        stage ('Deploy Kubernetes') {
+            steps {
+                sh 'Não foi realizado deploy no Kubernetes por questões de custos.'
+            }
+        } 
+
+        stage ('Starting APP') {
             environment {
                 tag_version = "${env.BUILD_ID}"
             }
