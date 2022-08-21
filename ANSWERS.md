@@ -54,4 +54,29 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 ![Arquitetura da Solução](./images/architecture.jpg)
 
 #### 2. Crie uma forma que possamos subir essa aplicação localmente de forma simples.
+Foi Aplicação foi empacotada permitindo maior portabilidade. <br>
 
+Para subir a aplicação basta utilizar o recurso da AWS chamado de Elastic BeanStalk e importar o arquivo Dockerfile file abaixo que está disponível no fork do projeto disponibilzado -> https://github.com/Dionatas/devops_test <br>
+
+**Exemplo do arquivo Dockerfile utilizado no Elastic Bean Stalk**
+
+```
+FROM golang
+
+WORKDIR /app
+
+RUN curl -o code.zip -L https://github.com/Dionatas/devops_test/archive/refs/heads/master.zip
+
+RUN apt-get update -y && apt-get install unzip -y
+
+RUN unzip code.zip && cd devops_test-master && mv * ../
+
+ADD . /app
+
+RUN go get github.com/gorilla/mux
+
+EXPOSE 8000
+
+ENTRYPOINT go run main.go
+
+```
