@@ -24,7 +24,11 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 [Documentação AWS](https://aws.amazon.com/pt/elasticbeanstalk/)
 
 
-### Benefícios 
-- 
+## Objetivos
 
+#### 1. Deploy da aplicação na AWS.
+
+![Image](images/architecture.png)
+
+#### 2. Crie uma forma que possamos subir essa aplicação localmente de forma simples.
 
