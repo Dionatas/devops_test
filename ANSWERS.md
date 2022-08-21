@@ -20,7 +20,7 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 
 "Não há custos adicionais pelo Elastic Beanstalk – você só paga pelos recursos da AWS necessários para executar e armazenar seus aplicativos."
 
-[Link](https://aws.amazon.com/pt/elasticbeanstalk/)
+[Documentação AWS](https://aws.amazon.com/pt/elasticbeanstalk/)
 
 ### Benefícios 
 - 
