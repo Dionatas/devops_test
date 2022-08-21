@@ -28,6 +28,8 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 
 #### 1. Deploy da aplicação na AWS.
 
+Elastic BeanStalk - Possibilita o gerenciamento completo de aplicatiovs web. <br>
+
 ![Arquitetura da Solução](./images/architecture.jpg)
 
 #### 2. Crie uma forma que possamos subir essa aplicação localmente de forma simples.
