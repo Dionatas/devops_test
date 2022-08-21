@@ -1,9 +1,27 @@
 # GetNinjas DevOps Answers. 🚀🚀🚀
 
+## About me
+
+Profissional *formado desde 2009* em **Redes de Computadores**, **Pós-graduado em Banco de Dados (ênfase Oracle)**, certificado **LPIC-1**, **LPIC-2**, **LPIC-3**, **ITIL v4**, **DevOps Professional** e **Oracle Cloud Infrastructure - OCI**.
+
+Mais de 10 anos de experiência em administração de sistemas Linux com atuação principal em:
+1) Middleware Jboss/Wildfly/EAP/Community e Tomcat
+2) Serviços Web - Apache/Nginx/Haproxy
+3) Storages all flash(Huawei)
+4) SAN (Storage Area Network) Rede corporativa de dados voltada para conectar e manter disponíveis servidores e storages via LAN dentro de um ambiente seguro, redundante e de alta performance.
+4) Hypervisor(VsPhere)<br>
+
+Sou dinâmico, inovador, trabalho bem em equipe, comunicativo, persistente, flexível, proativo, tenho alta capacidade para resolver problemas. <br>
+
+Sólidos conhecimentos em respostas a incidentes e investigações técnicas. <br>
+
+Profissional aderente a cultura DevOps e com perfil autodidata. <br>
+
 
 ## Sobre o teste
 Processo seletivo muito 🔝, isso mostra a **qualidade do time**. Cenário desafiador, cheio de possibildades, onde a criatividade e capacidade de desenhar soluções em cloud são cruciais para uma boa entrega.<br>
-Gostaria de ratificar que minha experiência com cloud AWS é apenas de laboratório pessoal, para fins de estudo. Há cerca de 30 dias o cliente que trabalho aderiu uma ata permitindo o uso de AWS como solução de Disaster Recovery DR, ou seja, estou tendo contato de verdade agora com cloud. 
+
+Gostaria de ratificar que não tenho vasta experiência com os recursos da AWS, detalhe, depois que aprendi a ler minha vida mudou para melhor. Atualmente estou participando de um projeto 
 
 
 ## Cenário
