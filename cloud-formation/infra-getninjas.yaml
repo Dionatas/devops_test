@@ -63,3 +63,171 @@ Resources:
       Tags:
         - Key: Name
           Value: !Join ['', ["Nat-", !Ref "AWS::StackName"]]
+
+
+# Criar Route Table Priv
+  PrivadaRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref NovoVPC
+      Tags:
+        - Key: Name
+          Value: Privada
+
+# Add Route Priv
+  PrivadaRoute1:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivadaRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NovoNatGateway
+
+
+# Criar Route Table Public
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref NovoVPC
+      Tags:
+        - Key: Name
+          Value: Public
+
+# Add Route Public
+  PublicRoute1:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref NovoInternetGateway
+
+# Associar Route Table com a Subnet public
+  PublicRouteTableAssociate:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      SubnetId: NovaSubnet1
+
+
+# Associar Route Table com a Subnet private
+  PrivateRouteTableAssociate:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref PrivadaRouteTable
+      SubnetId: NovaSubnet2
+
+
+# Criar Security Group
+  NovoWebSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Sec Group for the Webservers
+      GroupName: Webservers
+      VpcId: ! Ref NovoVPC
+      SecurityGroupIngress:
+        -
+          - IpProtocol: tcp 
+          - FromPort: 0
+          - ToPort: 22
+          - CidrIp: 0.0.0.0/0
+        - 
+          - IpProtocol: tcp 
+          - FromPort: 0
+          - ToPort: 80
+          - CidrIp: 0.0.0.0/0
+        -
+          - IpProtocol: tcp 
+          - FromPort: 0
+          - ToPort: 443
+          - CidrIp: 0.0.0.0/0
+
+
+# Criar Security Group DB
+  NovoDBSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Sec Group for the Databases
+      GroupName: Database
+      VpcId: ! Ref NovoVPC
+      SecurityGroupIngress:
+        -
+          - IpProtocol: tcp 
+          - FromPort: 0
+          - ToPort: 22
+          - CidrIp: 0.0.0.0/0
+        - 
+          - IpProtocol: tcp 
+          - FromPort: 0
+          - ToPort: 3306
+          - CidrIp: 0.0.0.0/0
+
+# Criar Volume
+  DBVolume:
+    Type: AWS::EC2::Volume
+    Properties:
+      AvailabilityZone: !GetAtt Ec2Instance.AvailabilityZone
+      Size: 100
+      Encrypted: false
+      Tags:
+        - 
+          Key: Name
+          Value: data-volume
+      VolumeType: gp2
+    DeletionPolicy: Snapshot
+
+# Create DB
+  NovoDBInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      BlockDeviceMappings:
+        -
+          DeviceName: "/dev/sda1"
+          Ebs:
+            VolumeSize: 24
+            VolumeType: gp2
+      InstanceType: t2.nano
+      ImageId: ami-052efd3df9dad4825
+      KeyName: keypair-virginia
+      Monitoring: true
+      SecurityGroupIds:
+        - !Ref NovoDBSecGroup
+      SubnetId: !Ref NovaSubnet2
+      Tags:
+        - 
+          Key: Name
+          Value: myDB
+      Volumes:
+        - 
+          Device: "/dev/sdF"
+          VolumeId: !Ref DBVolume
+
+
+# Elastic IP
+  NovoElasticIP:
+    Type: AWS::EC2::EIP
+    Properties:
+      InstanceId: NovaWEBInstance
+      Domain: NovoVPC
+
+
+# WEB INSTANCE
+  NovoWEBInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      BlockDeviceMappings:
+        -
+          DeviceName: "/dev/sda1"
+          Ebs:
+            VolumeSize: 24
+            VolumeType: gp2
+      InstanceType: t2.nano
+      ImageId: ami-052efd3df9dad4825
+      KeyName: keypair-virginia
+      Monitoring: true
+      SecurityGroupIds:
+        - !Ref NovoWEBSecGroup
+      SubnetId: !Ref NovaSubnet1
+      Tags:
+        - 
+          Key: Name
+          Value: !Sub ${AWS::StackName}-WEB
+

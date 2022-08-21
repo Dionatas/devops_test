@@ -1,0 +1,11 @@
+FROM golang
+
+WORKDIR /app
+
+ADD . /app
+
+RUN go get github.com/gorilla/mux
+
+EXPOSE 8000
+
+ENTRYPOINT go run main.go
