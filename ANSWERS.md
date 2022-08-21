@@ -18,7 +18,11 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 
 "Basta fazer o upload de seu código e o Elastic Beanstalk se encarrega automaticamente da implementação, desde o provisionamento de capacidade, o balanceamento de carga e a escalabilidade automática até o monitoramento da saúde do aplicativo. Ao mesmo tempo, você mantém total controle sobre os recursos da AWS que possibilitam a operação do seu aplicativo e pode acessar os recursos subjacentes a qualquer momento."<br>
 
-Não há custos adicionais pelo Elastic Beanstalk – você só paga pelos recursos da AWS necessários para executar e armazenar seus aplicativos.
+"Não há custos adicionais pelo Elastic Beanstalk – você só paga pelos recursos da AWS necessários para executar e armazenar seus aplicativos."
+
+[Link](https://aws.amazon.com/pt/elasticbeanstalk/)
 
 ### Benefícios 
 - 
+
+
