@@ -82,7 +82,7 @@ ENTRYPOINT go run main.go
 #### 3. Coloque esta aplicação em um fluxo de CI que realize teste neste código
 Apesar de já existir um teste unitário no repo, não foi possivel automatizar a execução do teste via pipeline devido falta de conhecimento/tempo. 
 
-Consegui automatizar via Jenkinsfile disponibilizado no repositório o build do projeto , depois fiz o push da imagem gerada no build para o registry dockerhub.com e por fim a implantação no Kubernetes. Neste caso crie um job no jenkins e configurei o repositório e o arquivo Jenkinsfile. 
+Consegui automatizar via Jenkinsfile disponibilizado no repositório o build do projeto , depois fiz o push da imagem gerada no build para o registry dockerhub.com e por fim a implantação no Kubernetes. Neste caso criei um job no jenkins e configurei o repositório e o arquivo Jenkinsfile. 
 
 ```
 pipeline {
