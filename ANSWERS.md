@@ -164,3 +164,8 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
   fmt.Fprintf(w, "Hey Bro, %v is Alive!", appname)
 }
 ```
+
+#### 5. Discorra qual (ou quais) processos você adotaria para garantir uma entrega contínua desta aplicação, desde o desenvolvimento, até a produção.
+
+Existem diversas soluções para garantir uma entrega contínua. <br>
+Adotar uma solução de CI/CD é de extrema importância para garantir uma entrega contínua da aplicação, utilizando estrátégias de deploys baseadas no objetivo do negócio. O Jenkins é uma das soluções mais antigas no mercado para uso de CI/CD, contudo a AWS traz em seu portifólio o CodePipeline com o mesmo objetivo. 
