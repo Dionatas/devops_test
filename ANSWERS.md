@@ -166,7 +166,7 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 ```
 
 #### 5. Discorra qual (ou quais) processos você adotaria para garantir uma entrega contínua desta aplicação, desde o desenvolvimento, até a produção.
-O objetivo para garantir uma entrega contínua é tornar o processo de desenvolvimento, teste e entrega de ferramentas mais ágil e eficiente. <br>
+O X da questão é tornar o processo de desenvolvimento, teste e entrega de ferramentas mais ágil e eficiente. <br>
 
 Existem diversas soluções no mercado para garantir uma entrega contínua, são elas:
 - Jenkins
