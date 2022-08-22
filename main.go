@@ -16,7 +16,7 @@ func main() {
 }
 
 func HealthCheck(w http.ResponseWriter, r *http.Request) {
-  appname := getEnv("APP_NAME", "Ninja")
+  appname := getEnv("APP_NAME", "LPICBA")
   w.WriteHeader(http.StatusOK)
   fmt.Fprintf(w, "Hey Bro, %v is Alive!", appname)
 }

@@ -78,3 +78,6 @@ EXPOSE 8000
 ENTRYPOINT go run main.go
 
 ```
+
+#### 3. Coloque esta aplicação em um fluxo de CI que realize teste neste código
+
