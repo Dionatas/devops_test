@@ -80,4 +80,87 @@ ENTRYPOINT go run main.go
 ```
 
 #### 3. Coloque esta aplicação em um fluxo de CI que realize teste neste código
+Apesar de já existir um teste unitário no repo, não foi possivel automatizar a execução do teste via pipeline devido falta de conhecimento/tempo. 
 
+Consegui automatizar via Jenkinsfile disponibilizado no repositório o build do projeto , depois fiz o push da imagem gerada no build para o registry dockerhub.com e por fim a implantação no Kubernetes. Neste caso crie um job no jenkins e configurei o repositório e o arquivo Jenkinsfile. 
+
+```
+pipeline {
+    agent any 
+
+    stages {
+        
+        stage ('Remove Container') {
+            steps {
+                sh 'docker rm -f meugo'
+            }
+        } 
+        
+        stage ('Build Image') {
+            steps {
+                script {
+                    dockerapp = docker.build("dionatas/getninjas:${env.BUILD_ID}", '-f ./Dockerfile . --no-cache')
+                }
+            }
+        }
+        
+
+        stage ('Push Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'token-dockerhub') {
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+
+        stage ('Deploy Kubernetes') {
+            steps {
+                sh 'echo "Não foi realizado deploy no Kubernetes por questões de custos"'
+            }
+        } 
+
+        stage ('Starting APP') {
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
+            steps {
+                sh 'docker container run -d --name meugo -p 80:8000 dionatas/getninjas:$tag_version'
+            }
+        }   
+    
+    
+    }
+}
+
+```
+
+#### 4. Altere o nome da aplicação.
+
+Conforme solicitado, segue abaixo retorno do comando CURL. O código HTTP retornado foi o 200, indicando sucesso da requisição. 
+
+``` 
+ubuntu@ip-10-0-1-176:~$ curl -i http://getninjas.lpicba.tk/healthcheck
+HTTP/1.1 200 OK
+Date: Mon, 22 Aug 2022 02:49:57 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 24
+Connection: keep-alive
+Server: nginx/1.20.0
+
+Hey Bro, Ninja is Alive!
+```
+
+Mesmo alterando o valor da variável para LPICBA no arquivo **main.go**, fazendo deploy novamente, mesmo assim não foi possível mudar o retorno do print -> Hey Bro, Ninja is Alive! <br> 
+
+É possível que seja cache da solução Elastic BeanStalk... pensei em remover o stack criado no BeanStalk e fazer novamente o deploy passando um novo Dockerfile com a variável alterada para ver se surti efeito. 
+
+
+```
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+  appname := getEnv("APP_NAME", "LPICBA")
+  w.WriteHeader(http.StatusOK)
+  fmt.Fprintf(w, "Hey Bro, %v is Alive!", appname)
+}
+```
