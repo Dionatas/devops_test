@@ -21,8 +21,6 @@ Profissional **aderente a cultura DevOps**, **metodologias ágeis** e **com perf
 ## Sobre o teste
 Processo seletivo muito 🔝, isso mostra a **qualidade do time**. Cenário desafiador, cheio de possibildades, onde a criatividade e capacidade de desenhar soluções em cloud são cruciais para uma boa entrega.<br>
 
-Gostaria de ratificar que não tenho vasta experiência com os recursos da AWS, detalhe, depois que aprendi a ler minha vida mudou para melhor. Atualmente estou participando de um projeto 
-
 
 ## Cenário
 Estamos vivendo em um mundo onde as coisas acontecem em uma velocidade cada vez maior. Obeter vantagens competitivas requer rapidez nas entregas, baixo lead time, altos níveis de serviços e experimentação implacável. <br>
@@ -56,7 +54,7 @@ O recurso da AWS escolhido foi o **Elastic BeanStalk** por ser fácil e simples 
 #### 2. Crie uma forma que possamos subir essa aplicação localmente de forma simples.
 Aplicação foi empacotada permitindo maior portabilidade. <br>
 
-Para subir a aplicação basta utilizar o recurso da AWS chamado de Elastic BeanStalk e importar o arquivo Dockerfile file abaixo que está disponível no fork do projeto disponibilzado -> https://github.com/Dionatas/devops_test <br>
+Para subir a aplicação basta utilizar o recurso da AWS chamado de Elastic BeanStalk e importar o arquivo Dockerfile que está disponível no fork do projeto disponibilzado -> https://github.com/Dionatas/devops_test <br>
 
 **Exemplo do arquivo Dockerfile utilizado no Elastic Bean Stalk**
 
