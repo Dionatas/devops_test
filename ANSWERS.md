@@ -166,6 +166,14 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 ```
 
 #### 5. Discorra qual (ou quais) processos você adotaria para garantir uma entrega contínua desta aplicação, desde o desenvolvimento, até a produção.
+O objetivo para garantir uma entrega contínua é tornar o processo de desenvolvimento, teste e entrega de ferramentas mais ágil e eficiente. <br>
 
-Existem diversas soluções para garantir uma entrega contínua. <br>
-Adotar uma solução de CI/CD é de extrema importância para garantir uma entrega contínua da aplicação, utilizando estrátégias de deploys baseadas no objetivo do negócio. O Jenkins é uma das soluções mais antigas no mercado para uso de CI/CD, contudo a AWS traz em seu portifólio o CodePipeline com o mesmo objetivo. 
+Existem diversas soluções no mercado para garantir uma entrega contínua, são elas:
+- Jenkins
+- TeamCity
+- Bamboo
+- Travis CI
+- Gitlab CI 
+- CodePipeline
+Adotar uma solução de CI/CD é de extrema importância para garantir uma entrega contínua da aplicação, utilizando estrátégias de deploys baseadas no objetivo do negócio. <br>
+O Jenkins é uma das soluções mais antigas no mercado para uso de CI/CD, contudo a AWS traz em seu portifólio o CodePipeline com o mesmo objetivo. 
